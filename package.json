@@ -1,0 +1,27 @@
+{
+  "name": "mocktail",
+  "version": "0.1.0",
+  "description": "Mock all of your ES6 module components with Mocktail.js!",
+  "main": "dist/mocktail.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wildhoney/Mocktail.js.git"
+  },
+  "keywords": [
+    "mocking",
+    "mock",
+    "import",
+    "es6",
+    "modules",
+    "export"
+  ],
+  "author": "Adam Timberlake <adam.timberlake@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wildhoney/Mocktail.js/issues"
+  },
+  "homepage": "https://github.com/Wildhoney/Mocktail.js#readme"
+}
