@@ -101,7 +101,6 @@ In your bootstrap you simply need to specify the name of the function you want t
 ```javascript
 import {env, inject, ENV} from 'mocktail';
 env(ENV.TESTING);
-
 class RequestMock {};
 inject('Request', RequestMock);
 ```
