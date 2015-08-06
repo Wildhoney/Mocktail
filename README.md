@@ -101,10 +101,12 @@ In your bootstrap you simply need to specify the name of the function you want t
 ```javascript
 import {env, inject, ENV} from 'mocktail';
 env(ENV.TESTING);
-inject('Request', class RequestMock {});
+
+class RequestMock {};
+inject('Request', RequestMock);
 ```
 
-And then within your `Request` module you would simply need to pass it through the `resolve` method with an *optional* second argument for the mocked fallback function:
+And then within your `Request` module you would simply need to pass it through the `resolve` method with an *optional* second argument for the mocked function which will be used as a default:
 
 ```javascript
 import {resolve} from 'mocktail';
@@ -112,7 +114,7 @@ class Request {};
 export default resolve(Request);
 ```
 
-Then whenever you reference `Request` in your unit tests, you'll receive `RequestMock` instead.
+Then whenever you reference `Request` in your unit tests, you'll receive `RequestMock` instead as long as you've set the `env` as `ENV.TESTING`.
 
 ## Contribute
 

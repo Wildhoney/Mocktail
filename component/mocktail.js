@@ -40,15 +40,16 @@ class Mocktail {
 
         }
 
+        const isProduction      = this.environment === Mocktail.PRODUCTION;
         const actualModule      = modules[0].name || null;
         const runtimeDependency = this.modules.get(actualModule);
 
-        if (actualModule && typeof runtimeDependency !== 'undefined') {
+        if (!isProduction && actualModule && typeof runtimeDependency !== 'undefined') {
             return runtimeDependency;
         }
 
         const mockedModule = (typeof modules[1] !== 'undefined' ? modules[1] : modules[0]);
-        return (this.environment === Mocktail.PRODUCTION) ? modules[0] : mockedModule;
+        return isProduction ? modules[0] : mockedModule;
 
     }
 
