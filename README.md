@@ -2,6 +2,16 @@
 
 Mock all of your ES6 module components with Mocktail using dependency injection.
 
+![Screenshot](media/Screenshot.png)
+
+![Travis](http://img.shields.io/travis/Wildhoney/Mocktail.js.svg?style=flat-square)
+&nbsp;
+![npm](http://img.shields.io/npm/v/mocktail.svg?style=flat-square)
+&nbsp;
+![License MIT](http://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)
+
+* **npm:** `npm install mocktail`
+
 ---
 
 ## Getting Started
@@ -15,7 +25,7 @@ export default new Mocktail();
 Whenever you export a module, pass it through `mocktail.resolve`:
 
 ```javascript
-import {resolve} from './mocktail.js';
+import {resolve} from 'mocktail';
 
 class Authentication {}
 class AuthenticationMock {}
@@ -26,19 +36,19 @@ export default resolve(Authentication, AuthenticationMock);
 With the `resolve` method, the second argument is **always** the mocked object that will be returned when `environment` is defined as `true` using:
 
 ```javascript
-import {env, ENV} from './mocktail.js';
+import {env, ENV} from 'mocktail';
 env(ENV.TESTING);
 // ...
 ```
 
-In the above example the default value for `environment` is `mocktail.ENV.PRODUCTION` and can be set explicitly by: `env(ENV.PRODUCTION)`.
+In the above example the default value for `environment` is `ENV.PRODUCTION` and can be set explicitly by: `env(ENV.PRODUCTION)`.
 
 ### Export As
 
 Often you may want to export your modules without exporting as the default &ndash; in these instances you can use the `export as` syntax:
 
 ```javascript
-import {resolve} from './mocktail.js';
+import {resolve} from 'mocktail';
 
 class Authentication {}
 class AuthenticationMock {}
