@@ -15,7 +15,6 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 ---
 
 ## Getting Started
-```
 
 Whenever you export a module, pass it through `mocktail.resolve` passing in both the actual object and its associated mock object:
 
@@ -33,6 +32,7 @@ With the `resolve` method, the second argument is **always** the mocked object t
 ```javascript
 import {env, ENV} from 'mocktail';
 env(ENV.TESTING);
+
 // ...
 ```
 
@@ -56,6 +56,7 @@ Then when you import the module elsewhere, you simply refer to the import as `Re
 
 ```javascript
 import {Request} from './request.js';
+
 // ...
 ```
 
