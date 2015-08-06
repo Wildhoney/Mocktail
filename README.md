@@ -38,6 +38,8 @@ env(ENV.TESTING);
 
 In the above example the default value for `environment` is `ENV.PRODUCTION` and can be set explicitly with: `env(ENV.PRODUCTION)`.
 
+With Mocktail it's important to note that the `import` syntax is **exactly** the same whether you're importing the actual object or its mocked counterpart.
+
 ### Export As
 
 Often you may want to export your modules without exporting as the `default` &ndash; in these instances you can use the `export as` syntax:
@@ -60,4 +62,27 @@ import {Request} from './request.js';
 // ...
 ```
 
-With Mocktail it's important to note that the `import` syntax is **exactly** the same whether you're importing the actual object or its mocked counterpart.
+## Configuration
+
+Setting up Mocktail is straightforward &ndash; the easiest way is to have a bootstrap file that is loaded before your unit tests are run.
+
+> Bootstrap.js:
+```javascript
+import mocktail from 'mocktail';
+mocktail.env(mocktail.ENV.TESTING);
+```
+
+You need to ensure that your `Bootstrap.js` file is loaded before you load your components:
+
+```javascript
+import bootstrap from './Bootstrap';
+import Request   from '../components/Request';
+
+describe('Request', () => {
+
+    // ...
+
+});
+```
+
+When you import `Request` after you've loaded your bootstrap that sets the environment to `ENV.TESTING`, assuming the `Request.js` file is setup correctly with `resolve` then you'll be dealing with `RequestMock` instead of `Request`.
