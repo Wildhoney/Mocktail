@@ -2,7 +2,7 @@
   "name": "mocktail",
   "version": "0.1.0",
   "description": "Mock all of your ES6 module components with Mocktail using dependency injection.",
-  "main": "dist/mocktail.js",
+  "main": "component/mocktail.js",
   "scripts": {
     "test": "gulp test"
   },
