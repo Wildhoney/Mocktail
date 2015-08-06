@@ -2,8 +2,6 @@
 
 Mock all of your ES6 module components with Mocktail using dependency injection.
 
-![Screenshot](media/Screenshot.png)
-
 ![Travis](http://img.shields.io/travis/Wildhoney/Mocktail.js.svg?style=flat-square)
 &nbsp;
 ![npm](http://img.shields.io/npm/v/mocktail.svg?style=flat-square)
@@ -11,6 +9,8 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 ![License MIT](http://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)
 
 * **npm:** `npm i mocktail -D`
+
+![Screenshot](media/Screenshot.png)
 
 ---
 
