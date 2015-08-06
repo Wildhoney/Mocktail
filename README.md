@@ -2,7 +2,7 @@
 
 Mock all of your ES6 module components with Mocktail using dependency injection.
 
-![Travis](http://img.shields.io/travis/Wildhoney/Mocktail.js.svg?style=flat-square)
+![Travis](http://img.shields.io/travis/Wildhoney/Mocktail.svg?style=flat-square)
 &nbsp;
 ![npm](http://img.shields.io/npm/v/mocktail.svg?style=flat-square)
 &nbsp;
@@ -57,7 +57,7 @@ export {Module as Request};
 Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either by the true `Request` object, or its mock &ndash; `RequestMock`:
 
 ```javascript
-import {Request} from './request.js';
+import {Request} from './Request';
 
 // ...
 ```
