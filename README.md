@@ -26,12 +26,12 @@ export default resolve(Authentication, AuthenticationMock);
 With the `resolve` method, the second argument is **always** the mocked object that will be returned when `environment` is defined as `true` using:
 
 ```javascript
-import {env, TESTING} from './mocktail.js';
-env(TESTING);
+import {env, ENV} from './mocktail.js';
+env(ENV.TESTING);
 // ...
 ```
 
-In the above example the default value for `environment` is `mocktail.PRODUCTION` and can be set explicitly by: `env(PRODUCTION)`.
+In the above example the default value for `environment` is `mocktail.ENV.PRODUCTION` and can be set explicitly by: `env(ENV.PRODUCTION)`.
 
 ### Export As
 

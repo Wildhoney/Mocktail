@@ -21,6 +21,7 @@ export default class {
      * @constructor
      */
     constructor() {
+        this.ENV         = { PRODUCTION, TESTING };
         this.environment = PRODUCTION;
     }
 
