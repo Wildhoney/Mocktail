@@ -39,7 +39,8 @@ class Mocktail {
 
         }
 
-        return (this.environment === Mocktail.PRODUCTION) ? modules[0] : (modules[1] || modules[0]);
+        const mockedModule = (typeof modules[1] !== 'undefined' ? modules[1] : modules[0]);
+        return (this.environment === Mocktail.PRODUCTION) ? modules[0] : mockedModule;
 
     }
 
@@ -82,4 +83,4 @@ const env      = ::mocktail.env;
 const reset    = ::mocktail.reset;
 
 // Export all of the interesting components from the Mocktail module.
-export { mocktail as default, ENV, resolve, env, reset };
+export {mocktail as default, ENV, resolve, env, reset};

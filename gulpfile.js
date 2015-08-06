@@ -19,5 +19,6 @@
     });
 
     gulp.task('test', ['karma']);
+    gulp.task('default', ['test']);
 
 })();

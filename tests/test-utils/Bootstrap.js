@@ -1,2 +1,2 @@
-import mocktail from '../../component/mocktail';
-mocktail.env(mocktail.ENV.TESTING);
+import {env, ENV} from '../../component/mocktail';
+env(ENV.TESTING);

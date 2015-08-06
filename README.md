@@ -40,7 +40,7 @@ In the above example the default value for `environment` is `ENV.PRODUCTION` and
 
 With Mocktail it's important to note that the `import` syntax is **exactly** the same whether you're importing the actual object or its mocked counterpart.
 
-### Export As
+### Named Export
 
 Often you may want to export your modules without exporting as the `default` &ndash; in these instances you can use the `export as` syntax:
 
