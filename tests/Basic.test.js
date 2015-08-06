@@ -29,4 +29,12 @@ describe('Mocktail: Basic', () => {
 
     });
 
+    it('Should be able to always return the actual object unless two objects are supplied;', () => {
+
+        env(ENV.TESTING);
+        const Module = resolve(Authentication);
+        expect(Module.name).toEqual('Authentication');
+
+    });
+
 });

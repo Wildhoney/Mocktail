@@ -31,7 +31,7 @@ const mocktail = new class Mocktail {
      * @return {*}
      */
     resolve(...modules) {
-        return (this.environment === Mocktail.PRODUCTION) ? modules[0] : modules[1];
+        return (this.environment === Mocktail.PRODUCTION) ? modules[0] : (modules[1] || modules[0]);
     }
 
     /**
