@@ -1,7 +1,7 @@
 /**
  * @module Mocktail
  * @author Adam Timberlake
- * @see https://github.com/Wildhoney/Mocktail.js
+ * @see https://github.com/Wildhoney/Mocktail
  */
 const mocktail = new class Mocktail {
 
@@ -44,7 +44,7 @@ const mocktail = new class Mocktail {
         if (!~[Mocktail.PRODUCTION, Mocktail.TESTING].indexOf(name)) {
 
             // Ensure the developer is passing the correct values to avoid disappointment.
-            throw new Error('Mocktail.js: Environment must be either Mocktail.PRODUCTION or Mocktail.TESTING.');
+            throw new Error('Mocktail: Environment must be either Mocktail.PRODUCTION or Mocktail.TESTING.');
 
         }
 
