@@ -19,4 +19,14 @@ describe('Mocktail: Basic', () => {
 
     });
 
+    it('Should be able to read and reset the environment to the default', () => {
+
+        env(ENV.TESTING);
+        expect(env()).toEqual(ENV.TESTING);
+
+        reset();
+        expect(env()).toEqual(ENV.PRODUCTION);
+
+    });
+
 });

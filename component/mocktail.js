@@ -36,10 +36,14 @@ const mocktail = new class Mocktail {
 
     /**
      * @method env
-     * @param {String} name
-     * @return {void}
+     * @param {String} [name=null]
+     * @return {String|void}
      */
-    env(name) {
+    env(name = null) {
+
+        if (!name) {
+            return this.environment;
+        }
 
         if (!~[Mocktail.PRODUCTION, Mocktail.TESTING].indexOf(name)) {
 
@@ -68,4 +72,4 @@ const reset   = ::mocktail.reset;
 const ENV     = mocktail.ENV;
 
 // Export all of the interesting components from the Mocktail module.
-export {mocktail as default, ENV, resolve, env, reset };
+export { mocktail as default, ENV, resolve, env, reset };
