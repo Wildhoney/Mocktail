@@ -3,7 +3,7 @@
  * @author Adam Timberlake
  * @see https://github.com/Wildhoney/Mocktail.js
  */
-export default class {
+const mocktail = new class Mocktail {
 
     /**
      * @property PRODUCTION
@@ -21,8 +21,8 @@ export default class {
      * @constructor
      */
     constructor() {
-        this.ENV         = { PRODUCTION, TESTING };
-        this.environment = PRODUCTION;
+        this.ENV         = { PRODUCTION: Mocktail.PRODUCTION, TESTING: Mocktail.TESTING };
+        this.environment = Mocktail.PRODUCTION;
     }
 
     /**
@@ -31,7 +31,7 @@ export default class {
      * @return {*}
      */
     resolve(...modules) {
-        return (this.environment === TESTING) ? modules[0] : modules[1];
+        return (this.environment === Mocktail.PRODUCTION) ? modules[0] : modules[1];
     }
 
     /**
@@ -41,7 +41,7 @@ export default class {
      */
     env(name) {
 
-        if (!~[PRODUCTION, TESTING].indexOf(name)) {
+        if (!~[Mocktail.PRODUCTION, Mocktail.TESTING].indexOf(name)) {
 
             // Ensure the developer is passing the correct values to avoid disappointment.
             throw new Error('Mocktail.js: Environment must be either Mocktail.PRODUCTION or Mocktail.TESTING.');
@@ -52,4 +52,20 @@ export default class {
 
     }
 
-}
+    /**
+     * @method reset
+     * @return {void}
+     */
+    reset() {
+        this.environment = Mocktail.PRODUCTION;
+    }
+
+};
+
+const resolve = ::mocktail.resolve;
+const env     = ::mocktail.env;
+const reset   = ::mocktail.reset;
+const ENV     = mocktail.ENV;
+
+// Export all of the interesting components from the Mocktail module.
+export {mocktail as default, ENV, resolve, env, reset };

@@ -4,15 +4,14 @@ module.exports = function(config) {
 
         frameworks: ['jasmine', 'browserify'],
         files: [
-            'tests/spec.js',
-            'tests/*.js',
-            'tests/**/*.js'
+            'component/mocktail.js',
+            'tests/*.test.js'
         ],
         preprocessors: {
             'component/*.js': ['browserify'],
-            'tests/*.test.js': ['browserify'],
-            'tests/**/*.test.js': ['browserify'],
-            'tests/**/**/*.test.js': ['browserify']
+            'tests/*.js': ['browserify'],
+            'tests/**/*.js': ['browserify'],
+            'tests/**/**/*.js': ['browserify']
         },
         reporters: ['spec'],
         port: 9876,

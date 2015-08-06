@@ -1,0 +1,2 @@
+component: component/mocktail.js
+tests: tests/*.test.js
