@@ -3,7 +3,7 @@
  * @author Adam Timberlake
  * @see https://github.com/Wildhoney/Mocktail
  */
-const mocktail = new class Mocktail {
+class Mocktail {
 
     /**
      * @property PRODUCTION
@@ -73,12 +73,13 @@ const mocktail = new class Mocktail {
         this.environment = Mocktail.PRODUCTION;
     }
 
-};
+}
 
-const resolve = ::mocktail.resolve;
-const env     = ::mocktail.env;
-const reset   = ::mocktail.reset;
-const ENV     = mocktail.ENV;
+const mocktail = new Mocktail();
+const ENV      = mocktail.ENV;
+const resolve  = ::mocktail.resolve;
+const env      = ::mocktail.env;
+const reset    = ::mocktail.reset;
 
 // Export all of the interesting components from the Mocktail module.
 export { mocktail as default, ENV, resolve, env, reset };
