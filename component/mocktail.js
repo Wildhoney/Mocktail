@@ -21,8 +21,8 @@ const mocktail = new class Mocktail {
      * @constructor
      */
     constructor() {
-        this.ENV         = { PRODUCTION: Mocktail.PRODUCTION, TESTING: Mocktail.TESTING };
-        this.environment = Mocktail.PRODUCTION;
+        this.ENV = { PRODUCTION: Mocktail.PRODUCTION, TESTING: Mocktail.TESTING };
+        this.reset();
     }
 
     /**
@@ -44,7 +44,7 @@ const mocktail = new class Mocktail {
         if (!~[Mocktail.PRODUCTION, Mocktail.TESTING].indexOf(name)) {
 
             // Ensure the developer is passing the correct values to avoid disappointment.
-            throw new Error('Mocktail: Environment must be either Mocktail.PRODUCTION or Mocktail.TESTING.');
+            throw new Error('Mocktail: Environment must be either mocktail.ENV.PRODUCTION or mocktail.ENV.TESTING.');
 
         }
 
