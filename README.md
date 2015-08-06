@@ -60,8 +60,4 @@ import {Request} from './request.js';
 // ...
 ```
 
-### Philosophy
-
-As all of the import paths are relative in ECMAScript 6, it's not possible to mock objects based on the environment &ndash; this makes it cumbersome in any approach to mocking objects. In all likeliness you'll resort to adding dependency injection capabilities to the object you wish to mock directly &ndash; perhaps with an [`init` method](http://davidvujic.blogspot.co.uk/2015/02/is-the-es6-import-feature-an-anti-pattern.html). However, we believe that an object shouldn't be aware of its mocked counterpart &ndash; taking this approach we simply bake the mocked object into the same file as the actual object, which keeps them together, yet we still have a clear separation of concerns between our two objects.
-
-One of the most important aspects to Mocktail is that when you import a module, you shouldn't care whether you're importing the actual object or its mock &ndash; the syntax for the import will **always** be the same.
+With Mocktail it's important to note that the `import` syntax is **exactly** the same whether you're importing the actual object or its mocked counterpart.
