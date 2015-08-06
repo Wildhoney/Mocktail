@@ -1,5 +1,5 @@
 import {resolve, reset, env, ENV} from '../component/mocktail';
-import bootstrap                  from './test-utils/Bootstrap';
+import _                          from './test-utils/Bootstrap';
 import Authentication             from './test-utils/modules/Authentication';
 import AuthenticationMock         from './test-utils/modules/AuthenticationMock';
 

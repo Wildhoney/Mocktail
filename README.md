@@ -54,7 +54,7 @@ const Module = resolve(Request, RequestMock);
 export {Module as Request};
 ```
 
-Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either by the true `Request` object, or its mock &ndash; `RequestMock`:
+Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either be the true `Request` object, or its mock &ndash; `RequestMock`:
 
 ```javascript
 import {Request} from './Request';
@@ -64,19 +64,19 @@ import {Request} from './Request';
 
 ## Configuration
 
-Setting up Mocktail is straightforward &ndash; the easiest way is to have a bootstrap file that is loaded before your unit tests are run.
+Setting up Mocktail is straightforward &ndash; with the easiest way being to have a bootstrap file that is loaded before your unit tests are run.
 
 > Bootstrap.js:
 ```javascript
-import mocktail from 'mocktail';
-mocktail.env(mocktail.ENV.TESTING);
+import {env, ENV} from 'mocktail';
+env(ENV.TESTING);
 ```
 
-You need to ensure that your `Bootstrap.js` file is loaded before you load your components:
+You then need to ensure that your bootstrap file is loaded prior to the loading of your components:
 
 ```javascript
-import bootstrap from './Bootstrap';
-import Request   from '../components/Request';
+import _       from './Bootstrap';
+import Request from '../components/Request';
 
 describe('Request', () => {
 
@@ -85,4 +85,14 @@ describe('Request', () => {
 });
 ```
 
-When you import `Request` after you've loaded your bootstrap that sets the environment to `ENV.TESTING`, assuming the `Request.js` file is setup correctly with `resolve` then you'll be dealing with `RequestMock` instead of `Request`.
+Any time the `Request` component is imported, it will be the mocked counterpart as opposed to the actual object &ndash; which in the case of `Request` objects would simply mimic an AJAX call using a delay.
+
+You can take a look in the [`example` directory](https://github.com/Wildhoney/Mocktail/blob/master/example) for the recommended setup for Mocktail.
+
+![Screenshot](media/ScreenshotExtended.png)
+
+## Contribute
+
+[Pull requests](https://github.com/Wildhoney/Mocktail/pulls) are **highly** encouraged if you find any bugs, or wish to improve the codebase with wonderful ideas. However, if you're a little shy, please feel free to [open an issue](https://github.com/Wildhoney/Mocktail/issues) &ndash; that is fine, too.
+
+Tests are written in Karma and can be run with `npm run test` after you have installed all dependencies with `npm i`.
