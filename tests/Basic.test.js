@@ -37,4 +37,18 @@ describe('Mocktail: Basic', () => {
 
     });
 
+    it('Should throw an exception if the developer supplies an invalid environment name;', () => {
+
+        const error = 'Mocktail: Environment must be either mocktail.ENV.PRODUCTION or mocktail.ENV.TESTING.';
+        expect(() => env('Boo!')).toThrow(new Error(error));
+
+    });
+
+    it('Should throw an exception if the developer supplies zero components to resolve;', () => {
+
+        const error = 'Mocktail: You must supply at least one component to the mocktail.resolve method.';
+        expect(() => resolve()).toThrow(new Error(error));
+
+    });
+
 });

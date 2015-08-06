@@ -31,7 +31,16 @@ const mocktail = new class Mocktail {
      * @return {*}
      */
     resolve(...modules) {
+
+        if (modules.length === 0) {
+
+            // Prevent the developer from shooting themselves in the foot.
+            throw new Error('Mocktail: You must supply at least one component to the mocktail.resolve method.');
+
+        }
+
         return (this.environment === Mocktail.PRODUCTION) ? modules[0] : (modules[1] || modules[0]);
+
     }
 
     /**
