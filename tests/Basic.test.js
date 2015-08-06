@@ -1,7 +1,7 @@
-import {resolve, reset, env, ENV} from '../component/mocktail';
-import _                          from './test-utils/Bootstrap';
-import Authentication             from './test-utils/modules/Authentication';
-import AuthenticationMock         from './test-utils/modules/AuthenticationMock';
+import {resolve, inject, reset, env, ENV} from '../component/mocktail';
+import _                                  from './test-utils/Bootstrap';
+import Authentication                     from './test-utils/modules/Authentication';
+import AuthenticationMock                 from './test-utils/modules/AuthenticationMock';
 
 afterEach(() => reset());
 
@@ -44,6 +44,10 @@ describe('Mocktail: Basic', () => {
 
         const error = 'Mocktail: Environment must be either mocktail.ENV.PRODUCTION or mocktail.ENV.TESTING.';
         expect(() => env('Boo!')).toThrow(new Error(error));
+        expect(() => env(0)).toThrow(new Error(error));
+        expect(() => env(false)).toThrow(new Error(error));
+        expect(() => env(undefined)).not.toThrow(new Error(error));
+        expect(() => env(null)).not.toThrow(new Error(error));
 
     });
 
@@ -51,6 +55,10 @@ describe('Mocktail: Basic', () => {
 
         const error = 'Mocktail: You must supply at least one component to the mocktail.resolve method.';
         expect(() => resolve()).toThrow(new Error(error));
+        expect(() => resolve(undefined)).toThrow(new Error(error));
+        expect(() => resolve(0)).not.toThrow(new Error(error));
+        expect(() => resolve(false)).not.toThrow(new Error(error));
+        expect(() => resolve(null)).not.toThrow(new Error(error));
 
     });
 

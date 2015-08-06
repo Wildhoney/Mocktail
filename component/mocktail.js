@@ -21,6 +21,7 @@ class Mocktail {
      * @constructor
      */
     constructor() {
+        this.modules = new Map();
         this.ENV = { PRODUCTION: Mocktail.PRODUCTION, TESTING: Mocktail.TESTING };
         this.reset();
     }
@@ -32,11 +33,18 @@ class Mocktail {
      */
     resolve(...modules) {
 
-        if (modules.length === 0) {
+        if (modules.length === 0 || typeof modules[0] === 'undefined') {
 
             // Prevent the developer from shooting themselves in the foot.
             throw new Error('Mocktail: You must supply at least one component to the mocktail.resolve method.');
 
+        }
+
+        const actualModule      = modules[0].name || null;
+        const runtimeDependency = this.modules.get(actualModule);
+
+        if (actualModule && typeof runtimeDependency !== 'undefined') {
+            return runtimeDependency;
         }
 
         const mockedModule = (typeof modules[1] !== 'undefined' ? modules[1] : modules[0]);
@@ -51,7 +59,7 @@ class Mocktail {
      */
     env(name = null) {
 
-        if (!name) {
+        if (name === null) {
             return this.environment;
         }
 
@@ -64,6 +72,16 @@ class Mocktail {
 
         this.environment = name;
 
+    }
+
+    /**
+     * @method inject
+     * @param {*} actual
+     * @param {*} mock
+     * @return {void}
+     */
+    inject(actual, mock) {
+        this.modules.set(actual, mock);
     }
 
     /**
@@ -80,7 +98,8 @@ const mocktail = new Mocktail();
 const ENV      = mocktail.ENV;
 const resolve  = ::mocktail.resolve;
 const env      = ::mocktail.env;
+const inject   = ::mocktail.inject;
 const reset    = ::mocktail.reset;
 
 // Export all of the interesting components from the Mocktail module.
-export {mocktail as default, ENV, resolve, env, reset};
+export {mocktail as default, ENV, resolve, env, inject, reset};

@@ -91,6 +91,29 @@ You can take a look in the [`example` directory](https://github.com/Wildhoney/Mo
 
 ![Screenshot](media/ScreenshotExtended.png)
 
+## Dependency Injection
+
+Another feature of Mocktail is the ability to inject an entirely custom module at runtime. Currently this feature only supports **named** functions and classes, and their names must be unique to your project otherwise you may be mocking a function with a shared name.
+
+In your bootstrap you simply need to specify the name of the function you want to mock:
+
+> Bootstrap.js
+```javascript
+import {env, inject, ENV} from 'mocktail';
+env(ENV.TESTING);
+inject('Request', class RequestMock {});
+```
+
+And then within your `Request` module you would simply need to pass it through the `resolve` method with an *optional* second argument for the mocked fallback function:
+
+```javascript
+import {resolve} from 'mocktail';
+class Request {};
+export default resolve(Request);
+```
+
+Then whenever you reference `Request` in your unit tests, you'll receive `RequestMock` instead.
+
 ## Contribute
 
 [Pull requests](https://github.com/Wildhoney/Mocktail/pulls) are **highly** encouraged if you find any bugs, or wish to improve the codebase with wonderful ideas. However, if you're a little shy, please feel free to [open an issue](https://github.com/Wildhoney/Mocktail/issues) &ndash; that is fine, too.

@@ -1,5 +1,5 @@
-import bootstrap from './test-utils/Bootstrap';
-import colours   from './test-utils/project/Colours';
+import _       from './test-utils/Bootstrap';
+import colours from './test-utils/project/Colours';
 
 describe('Mocktail: Import Project', () => {
 
