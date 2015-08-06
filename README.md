@@ -15,22 +15,17 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 ---
 
 ## Getting Started
-
-> mocktail.js:
-```javascript
-import Mocktail from 'mocktail';
-export default new Mocktail();
 ```
 
-Whenever you export a module, pass it through `mocktail.resolve`:
+Whenever you export a module, pass it through `mocktail.resolve` passing in both the actual object and its associated mock object:
 
 ```javascript
 import {resolve} from 'mocktail';
 
-class Authentication {}
-class AuthenticationMock {}
+class Request {}
+class RequestMock {}
 
-export default resolve(Authentication, AuthenticationMock);
+export default resolve(Request, RequestMock);
 ```
 
 With the `resolve` method, the second argument is **always** the mocked object that will be returned when `environment` is defined as `true` using:
@@ -50,16 +45,20 @@ Often you may want to export your modules without exporting as the default &ndas
 ```javascript
 import {resolve} from 'mocktail';
 
-class Authentication {}
-class AuthenticationMock {}
+class Request {}
+class RequestMock {}
 
-const Module = resolve(Authentication, AuthenticationMock);
-export {Module as Authentication};
+const Module = resolve(Request, RequestMock);
+export {Module as Request};
 ```
 
-Then when you import the module elsewhere, you simply refer to the import as `Authentication`, which could either by the true `Authentication` object, or its mock &ndash; `AuthenticationMock`:
+Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either by the true `Request` object, or its mock &ndash; `RequestMock`:
 
 ```javascript
-import {Authentication} from './authentication.js';
+import {Request} from './request.js';
 // ...
 ```
+
+### Philosophy
+
+As all of the import paths are relative in ECMAScript 6, it's not possible to mock objects based on the environment &ndash; this makes it cumbersome in any approach to mocking objects. In all likeliness you'll resort to adding dependency injection capabilities to the object you wish to mock directly &ndash; perhaps with an [`init` method](http://davidvujic.blogspot.co.uk/2015/02/is-the-es6-import-feature-an-anti-pattern.html). However, we believe that an object shouldn't be aware of its mocked counterpart &ndash; taking this approach we simply bake the mocked object into the same file as the actual object, which keeps them together, yet we still have a clear separation of concerns between our two objects.
