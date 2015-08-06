@@ -1,5 +1,8 @@
-# Mocktail.js
+<img src="media/Mocktail.png" width="300" alt="Mocktail" />
+
 Mock all of your ES6 module components with Mocktail using dependency injection.
+
+---
 
 ## Getting Started
 
@@ -28,7 +31,7 @@ env(TESTING);
 // ...
 ```
 
-In the above example the default value for `environment` is `mocktail.PRODUCTION` and can be set explicitly as: `env(PRODUCTION)`.
+In the above example the default value for `environment` is `mocktail.PRODUCTION` and can be set explicitly by: `env(PRODUCTION)`.
 
 ### Export As
 
@@ -44,7 +47,7 @@ const Module = resolve(Authentication, AuthenticationMock);
 export {Module as Authentication};
 ```
 
-Then when you import the module elsewhere, you simply refer to the import as `Authentication`:
+Then when you import the module elsewhere, you simply refer to the import as `Authentication`, which could either by the true `Authentication` object, or its mock &ndash; `AuthenticationMock`:
 
 ```javascript
 import {Authentication} from './authentication.js';
