@@ -10,7 +10,7 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 &nbsp;
 ![License MIT](http://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)
 
-* **npm:** `npm install mocktail`
+* **npm:** `npm i mocktail -D`
 
 ---
 
