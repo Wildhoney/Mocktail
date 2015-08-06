@@ -1,6 +1,6 @@
 import Authentication from '../exports/Default';
 
-export default new class Colours {
+export default new class {
 
     getRequestObject() {
         return Authentication;
