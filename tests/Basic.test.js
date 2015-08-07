@@ -62,4 +62,17 @@ describe('Mocktail: Basic', () => {
 
     });
 
+    it('Should throw an exception if the developer attempts to set a mock without a label;', () => {
+
+        const error = 'Mocktail: You must supply the function name of the object to mock.';
+        expect(() => inject(false, {})).toThrow(new Error(error));
+        expect(() => inject(null, {})).toThrow(new Error(error));
+        expect(() => inject(undefined, {})).toThrow(new Error(error));
+        expect(() => inject({}, {})).toThrow(new Error(error));
+        expect(() => inject([], {})).toThrow(new Error(error));
+        expect(() => inject('', {})).not.toThrow(new Error(error));
+        expect(() => inject('x', {})).not.toThrow(new Error(error));
+
+    });
+
 });

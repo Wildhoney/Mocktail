@@ -77,12 +77,18 @@ class Mocktail {
 
     /**
      * @method inject
-     * @param {*} actual
+     * @param {String} actual
      * @param {*} mock
      * @return {void}
      */
     inject(actual, mock) {
+
+        if (typeof actual !== 'string') {
+            throw new Error('Mocktail: You must supply the function name of the object to mock.');
+        }
+
         this.modules.set(actual, mock);
+
     }
 
     /**
