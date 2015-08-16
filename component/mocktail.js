@@ -56,7 +56,7 @@ class Mocktail {
 
         }
 
-        const runtimeDependency = this.modules.get(actualModule.name);
+        const runtimeDependency = this.modules.get(nameRepresentation || actualModule.name);
 
         if (!this.isProduction() && typeof runtimeDependency !== 'undefined') {
             return runtimeDependency;
