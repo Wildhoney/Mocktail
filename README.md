@@ -100,6 +100,7 @@ env(ENV.TESTING);
 
 You then need to ensure that your bootstrap file is loaded prior to the loading of your components:
 
+> Tests.js
 ```javascript
 import './Bootstrap';
 import Request from '../components/Request';
@@ -114,30 +115,6 @@ describe('Request', () => :page_facing_up: {
 Any time the `Request` component is imported, it will be the mocked counterpart as opposed to the actual object &ndash; which in the case of `Request` objects would simply mimic an AJAX call using a delay.
 
 You can take a look in the [`example` directory](https://github.com/Wildhoney/Mocktail/blob/master/example) for the recommended setup for Mocktail.
-
-## Dependency Injection
-
-Another feature of Mocktail is the ability to inject an entirely custom module at runtime. Currently this feature only supports **named** functions and classes, and their names must be unique to your project otherwise you may be mocking a function with a shared name.
-
-In your bootstrap you simply need to specify the name of the function you want to mock:
-
-> :page_facing_up: Bootstrap.js
-```javascript
-import {env, inject, ENV} from 'mocktail';
-env(ENV.TESTING);
-class RequestMock {};
-inject('Request', RequestMock);
-```
-
-And then within your `Request` module you would simply need to pass it through the `resolve` method with an *optional* second argument for the mocked function which will be used as a default:
-
-```javascript
-import {resolve} from 'mocktail';
-class Request {};
-export default resolve(Request);
-```
-
-Then whenever you reference `Request` in your unit tests, you'll receive `RequestMock` instead as long as you've set the `env` as `ENV.TESTING`.
 
 ## Contribute
 
