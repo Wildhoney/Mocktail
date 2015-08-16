@@ -132,8 +132,6 @@ Any time the `Request` component is imported, it will be the mocked counterpart 
 
 You can take a look in the [`example` directory](https://github.com/Wildhoney/Mocktail/blob/master/example) for the recommended setup for Mocktail.
 
-![Screenshot](media/ScreenshotExtended.png)
-
 ## Dependency Injection
 
 Another feature of Mocktail is the ability to inject an entirely custom module at runtime. Currently this feature only supports **named** functions and classes, and their names must be unique to your project otherwise you may be mocking a function with a shared name.
