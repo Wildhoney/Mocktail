@@ -51,10 +51,8 @@ Seldom you may wish to mock in your module itself &ndash; in these cases pass it
 > :page_facing_up: Request.js
 ```javascript
 import {mock} from 'mocktail';
-
 class Request {}
 class RequestMock {}
-
 export default mock(Request, RequestMock);
 ```
 
