@@ -24,20 +24,12 @@ class Request {}
 export default resolve(Request);
 ```
 
-By default the `resolve` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your bootstrap file:
+By default the `resolve` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your bootstrap file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
 
 > Bootstrap.js:
 ```javascript
 import {env, ENV, inject} from 'mocktail';
 env(ENV.TESTING);
-// ...
-```
-
-In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
-
-> Bootstrap.js:
-```javascript
-// ...
 inject('Request', RequestMock);
 ```
 
