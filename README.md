@@ -20,9 +20,7 @@ Mocktail encourages developers to mock at runtime &mdash; dependency injection &
 
 ```javascript
 import {resolve} from 'mocktail';
-
 class Request {}
-
 export default resolve(Request);
 ```
 
@@ -53,7 +51,6 @@ Now whenever you import the `Request` module in your unit tests &mdash; assuming
 ```javascript
 import 'Bootstrap';
 import Request from 'Request';
-
 // ...
 ```
 
@@ -75,7 +72,6 @@ With the `mock` method, the second argument is **always** the mocked object that
 ```javascript
 import {env, ENV} from 'mocktail';
 env(ENV.TESTING);
-
 // ...
 ```
 
@@ -101,7 +97,6 @@ Then when you import the module elsewhere, you simply refer to the import as `Re
 
 ```javascript
 import {Request} from './Request';
-
 // ...
 ```
 
