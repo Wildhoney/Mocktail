@@ -30,7 +30,6 @@ By default the `resolve` method in the case above will return the actual `Reques
 ```javascript
 import {env, ENV, inject} from 'mocktail';
 env(ENV.TESTING);
-
 // ...
 ```
 
@@ -117,9 +116,7 @@ import './Bootstrap';
 import Request from '../components/Request';
 
 describe('Request', () => {
-
     // ...
-
 });
 ```
 
