@@ -75,10 +75,8 @@ Often you may want to export your modules without exporting as the `default` &nd
 > :page_facing_up: Request.js
 ```javascript
 import {resolve} from 'mocktail';
-
 class Request {}
 class RequestMock {}
-
 const Module = resolve(Request, RequestMock);
 export {Module as Request};
 ```
