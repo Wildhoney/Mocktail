@@ -42,13 +42,6 @@ class Mocktail {
      */
     resolve(actualModule, nameRepresentation = '') {
 
-        if (typeof actualModule !== 'function') {
-
-            // Prevent the user from passing any item that isn't a function/class.
-            throw new Error('Mocktail: Method mocktail.resolve only accepts a function.');
-
-        }
-
         if ((!actualModule.name || actualModule.name === '_class') && !nameRepresentation) {
 
             // Prevent the user from passing an anonymous function/class.
@@ -109,17 +102,17 @@ class Mocktail {
 
     /**
      * @method inject
-     * @param {String} actual
-     * @param {*} mock
+     * @param {String} actualName
+     * @param {*} mockModule
      * @return {void}
      */
-    inject(actual, mock) {
+    inject(actualName, mockModule) {
 
-        if (typeof actual !== 'string') {
+        if (typeof actualName !== 'string') {
             throw new Error('Mocktail: You must supply the function name of the object to mock.');
         }
 
-        this.modules.set(actual, mock);
+        this.modules.set(actualName, mockModule);
 
     }
 

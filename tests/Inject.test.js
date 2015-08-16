@@ -9,11 +9,6 @@ describe('Mocktail: Dependency Injection', () => {
         expect(Request.name).toEqual('RequestMock');
     });
 
-    it('Should be able to throw an exception when user passes a non-function', () => {
-        const message = 'Mocktail: Method mocktail.resolve only accepts a function.';
-        expect(() => resolve('Adam')).toThrow(new Error(message));
-    });
-
     it('Should be able to notify the developer when passing an anonymous function/class;', () => {
         const message = 'Mocktail: Passing anonymous function to mocktail.resolve; use second argument to specify a name.';
         expect(() => resolve(function() {})).toThrow(new Error(message));
