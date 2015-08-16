@@ -18,7 +18,7 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 
 Mocktail encourages developers to mock at runtime &mdash; dependency injection &mdash; when writing their tests &ndash; for this `mocktail` provides the `resolve` method.
 
-> Request.js:
+> :page_facing_up: Request.js
 ```javascript
 import {resolve} from 'mocktail';
 class Request {}
@@ -27,7 +27,7 @@ export default resolve(Request);
 
 By default the `resolve` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your bootstrap file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
 
-> Bootstrap.js:
+> Bootstrap.js
 ```javascript
 import {env, ENV, inject} from 'mocktail';
 env(ENV.TESTING);
@@ -96,7 +96,7 @@ import {Request} from './Request';
 
 Setting up Mocktail is straightforward &ndash; with the easiest way being to have a bootstrap file that is loaded before your unit tests are run.
 
-> Bootstrap.js:
+> Bootstrap.js
 ```javascript
 import {env, ENV} from 'mocktail';
 env(ENV.TESTING);
