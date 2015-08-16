@@ -1,6 +1,6 @@
 {
   "name": "mocktail",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Mock all of your ES6 module components with Mocktail using dependency injection.",
   "main": "component/mocktail.js",
   "scripts": {
