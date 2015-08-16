@@ -27,7 +27,7 @@ export default resolve(Request);
 
 By default the `resolve` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your bootstrap file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
 
-> Bootstrap.js
+> :page_facing_up: Bootstrap.js
 ```javascript
 import {env, ENV, inject} from 'mocktail';
 env(ENV.TESTING);
@@ -38,7 +38,7 @@ inject('Request', RequestMock);
 
 Now whenever you import the `Request` module in your unit tests &mdash; assuming you import **after** you have imported your bootstrap file &mdash; then the returned object will be `RequestMock` rather than `Request`.
 
-> Tests.js
+> :page_facing_up: Tests.js
 ```javascript
 import 'Bootstrap';
 import Request from 'Request';
@@ -48,7 +48,7 @@ import Request from 'Request';
 
 Seldom you may wish to mock in your module itself &ndash; in these cases pass it through `mocktail.mock` passing in both the actual object and its associated mock object:
 
-> Request.js
+> :page_facing_up: Request.js
 ```javascript
 import {mock} from 'mocktail';
 
@@ -60,7 +60,7 @@ export default mock(Request, RequestMock);
 
 With the `mock` method, the second argument is **always** the mocked object that will be returned when `environment` is defined as `true` using:
 
-> Bootstrap.js
+> :page_facing_up: Bootstrap.js
 ```javascript
 import {env, ENV} from 'mocktail';
 env(ENV.TESTING);
@@ -74,7 +74,7 @@ With Mocktail it's important to note that the `import` syntax is **exactly** the
 
 Often you may want to export your modules without exporting as the `default` &ndash; in these instances you can use the `export as` syntax:
 
-> Request.js
+> :page_facing_up: Request.js
 ```javascript
 import {resolve} from 'mocktail';
 
@@ -87,7 +87,7 @@ export {Module as Request};
 
 Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either be the true `Request` object, or its mock &ndash; `RequestMock`:
 
-> Tests.js
+> :page_facing_up: Tests.js
 ```javascript
 import {Request} from './Request';
 ```
@@ -96,7 +96,7 @@ import {Request} from './Request';
 
 Setting up Mocktail is straightforward &ndash; with the easiest way being to have a bootstrap file that is loaded before your unit tests are run.
 
-> Bootstrap.js
+> :page_facing_up: Bootstrap.js
 ```javascript
 import {env, ENV} from 'mocktail';
 env(ENV.TESTING);
@@ -108,8 +108,8 @@ You then need to ensure that your bootstrap file is loaded prior to the loading 
 import './Bootstrap';
 import Request from '../components/Request';
 
-describe('Request', () => {
-    it('Should provide RequestMock', () => {
+describe('Request', () => :page_facing_up: {
+    it('Should provide RequestMock', () => :page_facing_up: {
         expect(Request.name).toEqual('RequestMock');
     });
 });
@@ -125,7 +125,7 @@ Another feature of Mocktail is the ability to inject an entirely custom module a
 
 In your bootstrap you simply need to specify the name of the function you want to mock:
 
-> Bootstrap.js
+> :page_facing_up: Bootstrap.js
 ```javascript
 import {env, inject, ENV} from 'mocktail';
 env(ENV.TESTING);
