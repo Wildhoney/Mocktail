@@ -101,6 +101,7 @@ env(ENV.TESTING);
 You then need to ensure that your bootstrap file is loaded prior to the loading of your components:
 
 > Tests.js
+
 ```javascript
 import './Bootstrap';
 import Request from '../components/Request';
