@@ -38,7 +38,6 @@ In the same file you can specify an alternative for the `Request` object by spec
 > Bootstrap.js:
 ```javascript
 // ...
-
 inject('Request', RequestMock);
 ```
 
