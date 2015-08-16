@@ -1,7 +1,7 @@
-import {resolve, inject, reset, env, ENV} from '../component/mocktail';
-import _                                  from './test-utils/Bootstrap';
-import Authentication                     from './test-utils/modules/Authentication';
-import AuthenticationMock                 from './test-utils/modules/AuthenticationMock';
+import {mock, inject, reset, env, ENV} from '../component/mocktail';
+import                                      './test-utils/Bootstrap';
+import Authentication                  from './test-utils/modules/Authentication';
+import AuthenticationMock              from './test-utils/modules/AuthenticationMock';
 
 afterEach(() => reset());
 
@@ -10,11 +10,11 @@ describe('Mocktail: Basic', () => {
     it('Should be able to resolve the module depending on the environment;', () => {
 
         env(ENV.PRODUCTION);
-        const FirstModule = resolve(Authentication, AuthenticationMock);
+        const FirstModule = mock(Authentication, AuthenticationMock);
         expect(FirstModule.name).toEqual('Authentication');
 
         env(ENV.TESTING);
-        const SecondModule = resolve(Authentication, AuthenticationMock);
+        const SecondModule = mock(Authentication, AuthenticationMock);
         expect(SecondModule.name).toEqual('AuthenticationMock');
 
     });
@@ -32,10 +32,10 @@ describe('Mocktail: Basic', () => {
     it('Should be able to always return the actual object unless two objects are supplied;', () => {
 
         env(ENV.TESTING);
-        const FirstModule = resolve(Authentication);
+        const FirstModule = mock(Authentication);
         expect(FirstModule.name).toEqual('Authentication');
 
-        const SecondModule = resolve(true, false);
+        const SecondModule = mock(true, false);
         expect(SecondModule).toEqual(false);
 
     });
@@ -53,12 +53,12 @@ describe('Mocktail: Basic', () => {
 
     it('Should throw an exception if the developer supplies zero components to resolve;', () => {
 
-        const error = 'Mocktail: You must supply at least one component to the mocktail.resolve method.';
-        expect(() => resolve()).toThrow(new Error(error));
-        expect(() => resolve(undefined)).toThrow(new Error(error));
-        expect(() => resolve(0)).not.toThrow(new Error(error));
-        expect(() => resolve(false)).not.toThrow(new Error(error));
-        expect(() => resolve(null)).not.toThrow(new Error(error));
+        const error = 'Mocktail: You must supply at least one component to the mocktail.mock method.';
+        expect(() => mock()).toThrow(new Error(error));
+        expect(() => mock(undefined)).toThrow(new Error(error));
+        expect(() => mock(0)).not.toThrow(new Error(error));
+        expect(() => mock(false)).not.toThrow(new Error(error));
+        expect(() => mock(null)).not.toThrow(new Error(error));
 
     });
 
