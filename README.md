@@ -18,6 +18,7 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 
 Mocktail encourages developers to mock at runtime &mdash; dependency injection &mdash; when writing their tests &ndash; for this `mocktail` provides the `resolve` method.
 
+> Request.js:
 ```javascript
 import {resolve} from 'mocktail';
 class Request {}
@@ -37,17 +38,17 @@ inject('Request', RequestMock);
 
 Now whenever you import the `Request` module in your unit tests &mdash; assuming you import **after** you have imported your bootstrap file &mdash; then the returned object will be `RequestMock` rather than `Request`.
 
-> MyTests.test.js
+> Tests.js
 ```javascript
 import 'Bootstrap';
 import Request from 'Request';
-// ...
 ```
 
 ### Mocking Inline
 
 Seldom you may wish to mock in your module itself &ndash; in these cases pass it through `mocktail.mock` passing in both the actual object and its associated mock object:
 
+> Request.js
 ```javascript
 import {mock} from 'mocktail';
 
@@ -59,10 +60,10 @@ export default mock(Request, RequestMock);
 
 With the `mock` method, the second argument is **always** the mocked object that will be returned when `environment` is defined as `true` using:
 
+> Bootstrap.js
 ```javascript
 import {env, ENV} from 'mocktail';
 env(ENV.TESTING);
-// ...
 ```
 
 In the above example the default value for `environment` is `ENV.PRODUCTION` and can be set explicitly with: `env(ENV.PRODUCTION)`.
@@ -73,6 +74,7 @@ With Mocktail it's important to note that the `import` syntax is **exactly** the
 
 Often you may want to export your modules without exporting as the `default` &ndash; in these instances you can use the `export as` syntax:
 
+> Request.js
 ```javascript
 import {resolve} from 'mocktail';
 
@@ -85,9 +87,9 @@ export {Module as Request};
 
 Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either be the true `Request` object, or its mock &ndash; `RequestMock`:
 
+> Tests.js
 ```javascript
 import {Request} from './Request';
-// ...
 ```
 
 ## Configuration
@@ -107,7 +109,9 @@ import './Bootstrap';
 import Request from '../components/Request';
 
 describe('Request', () => {
-    // ...
+    it('Should provide RequestMock', () => {
+        expect(Request.name).toEqual('RequestMock');
+    });
 });
 ```
 
