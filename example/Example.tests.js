@@ -1,4 +1,4 @@
-import _ from './BootstrapTests';
+import './BootstrapTests';
 import Example from './Example';
 
 describe('Example', () => {
