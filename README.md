@@ -141,9 +141,7 @@ Assume you have the following project:
 > :page_facing_up: Request.js
 
 ```
-export default class Request() {
-    getData() {}
-}
+export default class Request() {}
 ```
 
 > :page_facing_up: Flickr.js
