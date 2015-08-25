@@ -128,7 +128,7 @@ class Mocktail {
 
 const mocktail = new Mocktail();
 const ENV      = mocktail.ENV;
-const mock  = ::mocktail.mock;
+const mock     = ::mocktail.mock;
 const stub     = ::mocktail.stub;
 const env      = ::mocktail.env;
 const inject   = ::mocktail.inject;
