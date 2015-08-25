@@ -140,13 +140,13 @@ Assume you have the following project:
 
 > :page_facing_up: Request.js
 
-```
+```javascript
 export default class Request() {}
 ```
 
 > :page_facing_up: Flickr.js
 
-```
+```javascript
 import Request from './Request';
 ```
 
