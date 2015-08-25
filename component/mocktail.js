@@ -140,6 +140,7 @@ const mocktail = new Mocktail();
 const ENV      = mocktail.ENV;
 const mock     = ::mocktail.mock;
 const stub     = ::mocktail.stub;
+const resolve  = ::mocktail.resolve;
 const env      = ::mocktail.env;
 const inject   = ::mocktail.inject;
 const reset    = ::mocktail.reset;
