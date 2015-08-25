@@ -73,8 +73,8 @@ class Mocktail {
 
         }
 
-        const stubedModule = (typeof modules[1] !== 'undefined' ? modules[1] : modules[0]);
-        return this.isProduction() ? modules[0] : stubedModule;
+        const stubbedModule = (typeof modules[1] !== 'undefined' ? modules[1] : modules[0]);
+        return this.isProduction() ? modules[0] : stubbedModule;
 
     }
 
