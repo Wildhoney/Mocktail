@@ -30,7 +30,7 @@ export default mock(Request);
 
 By default the `mock` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your bootstrap file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
 
-> :page_facing_up: Bootstrap.js
+> :page_facing_up: Setup.js
 
 ```javascript
 import {env, ENV, inject} from 'mocktail';
@@ -45,11 +45,11 @@ Now whenever you import the `Request` module in your unit tests &mdash; assuming
 > :page_facing_up: Tests.js
 
 ```javascript
-import 'Bootstrap';
+import 'Setup';
 import Request from 'Request';
 ```
 
-### Mocking Inline
+### Stubbing
 
 Seldom you may wish to stub in your module itself &ndash; in these cases pass it through `mocktail.stub` passing in both the actual object and its associated stub object:
 
@@ -66,7 +66,7 @@ export default stub(Request, RequestMock);
 
 With the `stub` method, the second argument is **always** the stubed object that will be returned when `environment` is defined as `true` using:
 
-> :page_facing_up: Bootstrap.js
+> :page_facing_up: Setup.js
 
 ```javascript
 import {env, ENV} from 'mocktail';
@@ -105,7 +105,7 @@ import {Request} from './Request';
 
 Setting up Mocktail is straightforward &ndash; with the easiest way being to have a bootstrap file that is loaded before your unit tests are run.
 
-> :page_facing_up: Bootstrap.js
+> :page_facing_up: Setup.js
 
 ```javascript
 import {env, ENV} from 'mocktail';
@@ -117,7 +117,7 @@ You then need to ensure that your bootstrap file is loaded prior to the loading 
 > :page_facing_up: Tests.js
 
 ```javascript
-import './Bootstrap';
+import './Setup';
 import Request from '../components/Request';
 
 describe('Request', () => :page_facing_up: {
