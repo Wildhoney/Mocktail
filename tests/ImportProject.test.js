@@ -3,7 +3,7 @@ import colours from './test-utils/project/Colours';
 
 describe('Mocktail: Import Project', () => {
 
-    it('Should be able to import the mocked Request object inside of Colours;', () => {
+    it('Should be able to import the stubed Request object inside of Colours;', () => {
         expect(colours.getRequestObject().name).toEqual('AuthenticationMock');
     });
 

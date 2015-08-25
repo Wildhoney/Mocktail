@@ -1,6 +1,6 @@
-import {mock}             from '../../../component/mocktail';
+import {stub}             from '../../../component/mocktail';
 import Authentication     from '../modules/Authentication';
 import AuthenticationMock from '../modules/AuthenticationMock';
 
-const Component = mock(Authentication, AuthenticationMock);
+const Component = stub(Authentication, AuthenticationMock);
 export {Component as Authentication};

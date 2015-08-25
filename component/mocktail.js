@@ -35,17 +35,17 @@ class Mocktail {
     }
 
     /**
-     * @method resolve
+     * @method mock
      * @param {Function} actualModule
      * @param {String} [nameRepresentation='']
      * @return {*}
      */
-    resolve(actualModule, nameRepresentation = '') {
+    mock(actualModule, nameRepresentation = '') {
 
         if ((!actualModule.name || actualModule.name === '_class') && !nameRepresentation) {
 
             // Prevent the user from passing an anonymous function/class.
-            throw new Error('Mocktail: Passing anonymous function to mocktail.resolve; use second argument to specify a name.')
+            throw new Error('Mocktail: Passing anonymous function to mocktail.mock; use second argument to specify a name.')
 
         }
 
@@ -60,21 +60,21 @@ class Mocktail {
     }
 
     /**
-     * @method mock
+     * @method stub
      * @param {Array} modules
      * @return {*}
      */
-    mock(...modules) {
+    stub(...modules) {
 
         if (modules.length === 0 || typeof modules[0] === 'undefined') {
 
             // Prevent the developer from shooting themselves in the foot.
-            throw new Error('Mocktail: You must supply at least one component to the mocktail.mock method.');
+            throw new Error('Mocktail: You must supply at least one component to the mocktail.stub method.');
 
         }
 
-        const mockedModule = (typeof modules[1] !== 'undefined' ? modules[1] : modules[0]);
-        return this.isProduction() ? modules[0] : mockedModule;
+        const stubedModule = (typeof modules[1] !== 'undefined' ? modules[1] : modules[0]);
+        return this.isProduction() ? modules[0] : stubedModule;
 
     }
 
@@ -103,16 +103,16 @@ class Mocktail {
     /**
      * @method inject
      * @param {String} actualName
-     * @param {*} mockModule
+     * @param {*} stubModule
      * @return {void}
      */
-    inject(actualName, mockModule) {
+    inject(actualName, stubModule) {
 
         if (typeof actualName !== 'string') {
-            throw new Error('Mocktail: You must supply the function name of the object to mock.');
+            throw new Error('Mocktail: You must supply the function name of the object to stub.');
         }
 
-        this.modules.set(actualName, mockModule);
+        this.modules.set(actualName, stubModule);
 
     }
 
@@ -128,11 +128,11 @@ class Mocktail {
 
 const mocktail = new Mocktail();
 const ENV      = mocktail.ENV;
-const resolve  = ::mocktail.resolve;
-const mock     = ::mocktail.mock;
+const mock  = ::mocktail.mock;
+const stub     = ::mocktail.stub;
 const env      = ::mocktail.env;
 const inject   = ::mocktail.inject;
 const reset    = ::mocktail.reset;
 
 // Export all of the interesting components from the Mocktail module.
-export {mocktail as default, ENV, resolve, mock, env, inject, reset};
+export {mocktail as default, ENV, mock, stub, env, inject, reset};

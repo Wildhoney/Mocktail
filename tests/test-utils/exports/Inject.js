@@ -1,4 +1,4 @@
-import {resolve} from '../../../component/mocktail';
+import {mock} from '../../../component/mocktail';
 import Request   from '../modules/Request';
 
-export default resolve(Request);
+export default mock(Request);

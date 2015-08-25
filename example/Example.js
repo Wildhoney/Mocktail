@@ -1,3 +1,3 @@
-import {resolve} from 'mocktail';
+import {mock} from 'mocktail';
 class Example {}
-export default resolve(Example);
+export default mock(Example);

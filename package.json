@@ -11,8 +11,8 @@
     "url": "git+https://github.com/Wildhoney/Mocktail.git"
   },
   "keywords": [
-    "mocking",
-    "mock",
+    "stubing",
+    "stub",
     "import",
     "es6",
     "modules",

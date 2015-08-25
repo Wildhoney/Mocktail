@@ -1,4 +1,4 @@
-import {mock, inject, reset, env, ENV} from '../component/mocktail';
+import {stub, inject, reset, env, ENV} from '../component/mocktail';
 import                                      './test-utils/Bootstrap';
 import Authentication                  from './test-utils/modules/Authentication';
 import AuthenticationMock              from './test-utils/modules/AuthenticationMock';
@@ -7,14 +7,14 @@ afterEach(() => reset());
 
 describe('Mocktail: Basic', () => {
 
-    it('Should be able to resolve the module depending on the environment;', () => {
+    it('Should be able to mock the module depending on the environment;', () => {
 
         env(ENV.PRODUCTION);
-        const FirstModule = mock(Authentication, AuthenticationMock);
+        const FirstModule = stub(Authentication, AuthenticationMock);
         expect(FirstModule.name).toEqual('Authentication');
 
         env(ENV.TESTING);
-        const SecondModule = mock(Authentication, AuthenticationMock);
+        const SecondModule = stub(Authentication, AuthenticationMock);
         expect(SecondModule.name).toEqual('AuthenticationMock');
 
     });
@@ -32,10 +32,10 @@ describe('Mocktail: Basic', () => {
     it('Should be able to always return the actual object unless two objects are supplied;', () => {
 
         env(ENV.TESTING);
-        const FirstModule = mock(Authentication);
+        const FirstModule = stub(Authentication);
         expect(FirstModule.name).toEqual('Authentication');
 
-        const SecondModule = mock(true, false);
+        const SecondModule = stub(true, false);
         expect(SecondModule).toEqual(false);
 
     });
@@ -51,20 +51,20 @@ describe('Mocktail: Basic', () => {
 
     });
 
-    it('Should throw an exception if the developer supplies zero components to resolve;', () => {
+    it('Should throw an exception if the developer supplies zero components to mock;', () => {
 
-        const error = 'Mocktail: You must supply at least one component to the mocktail.mock method.';
-        expect(() => mock()).toThrow(new Error(error));
-        expect(() => mock(undefined)).toThrow(new Error(error));
-        expect(() => mock(0)).not.toThrow(new Error(error));
-        expect(() => mock(false)).not.toThrow(new Error(error));
-        expect(() => mock(null)).not.toThrow(new Error(error));
+        const error = 'Mocktail: You must supply at least one component to the mocktail.stub method.';
+        expect(() => stub()).toThrow(new Error(error));
+        expect(() => stub(undefined)).toThrow(new Error(error));
+        expect(() => stub(0)).not.toThrow(new Error(error));
+        expect(() => stub(false)).not.toThrow(new Error(error));
+        expect(() => stub(null)).not.toThrow(new Error(error));
 
     });
 
-    it('Should throw an exception if the developer attempts to set a mock without a label;', () => {
+    it('Should throw an exception if the developer attempts to set a stub without a label;', () => {
 
-        const error = 'Mocktail: You must supply the function name of the object to mock.';
+        const error = 'Mocktail: You must supply the function name of the object to stub.';
         expect(() => inject(false, {})).toThrow(new Error(error));
         expect(() => inject(null, {})).toThrow(new Error(error));
         expect(() => inject(undefined, {})).toThrow(new Error(error));

@@ -16,19 +16,19 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 
 ## Getting Started
 
-Mocktail encourages developers to mock at runtime &mdash; dependency injection &mdash; when writing their tests &ndash; for this `mocktail` provides the `resolve` method.
+Mocktail encourages developers to stub at runtime &mdash; dependency injection &mdash; when writing their tests &ndash; for this `mocktail` provides the `mock` method.
 
 > :page_facing_up: Request.js
 
 ```javascript
-import {resolve} from 'mocktail';
+import {mock} from 'mocktail';
 
 class Request {}
 
-export default resolve(Request);
+export default mock(Request);
 ```
 
-By default the `resolve` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your bootstrap file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
+By default the `mock` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your bootstrap file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
 
 > :page_facing_up: Bootstrap.js
 
@@ -51,20 +51,20 @@ import Request from 'Request';
 
 ### Mocking Inline
 
-Seldom you may wish to mock in your module itself &ndash; in these cases pass it through `mocktail.mock` passing in both the actual object and its associated mock object:
+Seldom you may wish to stub in your module itself &ndash; in these cases pass it through `mocktail.stub` passing in both the actual object and its associated stub object:
 
 > :page_facing_up: Request.js
 
 ```javascript
-import {mock} from 'mocktail';
+import {stub} from 'mocktail';
 
 class Request {}
 class RequestMock {}
 
-export default mock(Request, RequestMock);
+export default stub(Request, RequestMock);
 ```
 
-With the `mock` method, the second argument is **always** the mocked object that will be returned when `environment` is defined as `true` using:
+With the `stub` method, the second argument is **always** the stubed object that will be returned when `environment` is defined as `true` using:
 
 > :page_facing_up: Bootstrap.js
 
@@ -75,7 +75,7 @@ env(ENV.TESTING);
 
 In the above example the default value for `environment` is `ENV.PRODUCTION` and can be set explicitly with: `env(ENV.PRODUCTION)`.
 
-With Mocktail it's important to note that the `import` syntax is **exactly** the same whether you're importing the actual object or its mocked counterpart.
+With Mocktail it's important to note that the `import` syntax is **exactly** the same whether you're importing the actual object or its stubed counterpart.
 
 ### Named Export
 
@@ -84,16 +84,16 @@ Often you may want to export your modules without exporting as the `default` &nd
 > :page_facing_up: Request.js
 
 ```javascript
-import {resolve} from 'mocktail';
+import {mock} from 'mocktail';
 
 class Request {}
 class RequestMock {}
 
-const Module = resolve(Request, RequestMock);
+const Module = mock(Request, RequestMock);
 export {Module as Request};
 ```
 
-Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either be the true `Request` object, or its mock &ndash; `RequestMock`:
+Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either be the true `Request` object, or its stub &ndash; `RequestMock`:
 
 > :page_facing_up: Tests.js
 
@@ -127,7 +127,7 @@ describe('Request', () => :page_facing_up: {
 });
 ```
 
-Any time the `Request` component is imported, it will be the mocked counterpart as opposed to the actual object &ndash; which in the case of `Request` objects would simply mimic an AJAX call using a delay.
+Any time the `Request` component is imported, it will be the stubed counterpart as opposed to the actual object &ndash; which in the case of `Request` objects would simply mimic an AJAX call using a delay.
 
 You can take a look in the [`example` directory](https://github.com/Wildhoney/Mocktail/blob/master/example) for the recommended setup for Mocktail.
 
