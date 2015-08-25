@@ -28,19 +28,20 @@ class Request {}
 export default mock(Request);
 ```
 
-By default the `mock` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your bootstrap file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
+By default the `mock` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your setup file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
 
 > :page_facing_up: Setup.js
 
 ```javascript
 import {env, ENV, inject} from 'mocktail';
 env(ENV.TESTING);
+
 inject('Request', RequestMock);
 ```
 
 **Note:** The `Request` name is specified as a `string` to the `inject` method, which is deduced from the actual `Request` object using its `name` property: `Request.name`.
 
-Now whenever you import the `Request` module in your unit tests &mdash; assuming you import **after** you have imported your bootstrap file &mdash; then the returned object will be `RequestMock` rather than `Request`.
+Now whenever you import the `Request` module in your unit tests &mdash; assuming you import **after** you have imported your setup file &mdash; then the returned object will be `RequestMock` rather than `Request`.
 
 > :page_facing_up: Tests.js
 
@@ -103,7 +104,7 @@ import {Request} from './Request';
 
 ## Configuration
 
-Setting up Mocktail is straightforward &ndash; with the easiest way being to have a bootstrap file that is loaded before your unit tests are run.
+Setting up Mocktail is straightforward &ndash; with the easiest way being to have a setup file that is loaded before your unit tests are run.
 
 > :page_facing_up: Setup.js
 
@@ -112,7 +113,7 @@ import {env, ENV} from 'mocktail';
 env(ENV.TESTING);
 ```
 
-You then need to ensure that your bootstrap file is loaded prior to the loading of your components:
+You then need to ensure that your setup file is loaded prior to the loading of your components:
 
 > :page_facing_up: Tests.js
 
@@ -130,6 +131,30 @@ describe('Request', () => :page_facing_up: {
 Any time the `Request` component is imported, it will be the stubed counterpart as opposed to the actual object &ndash; which in the case of `Request` objects would simply mimic an AJAX call using a delay.
 
 You can take a look in the [`example` directory](https://github.com/Wildhoney/Mocktail/blob/master/example) for the recommended setup for Mocktail.
+
+## Comparing Proxyquire
+
+[Proxyquire](https://github.com/thlorenz/proxyquire) is a useful tool in importing mocks for your tests &ndash; so much so that it may seem futile to use `Mocktail`. However, the advantages of `Mocktail` are apparent when you consider a project.
+
+Assume you have the following project:
+
+> :page_facing_up: Request.js
+
+```
+export default class Request() {
+    getData() {}
+}
+```
+
+> :page_facing_up: Flickr.js
+
+```
+import Request from './Request';
+```
+
+With the `proxyquire` approach the `Flickr.js` file would still be holding the **actual** `Request` object that makes live AJAX requests &ndash; when testing this would be undesirable. Therefore with the `Mocktail` approach, `Flickr.js` would instead be holding a `RequestMock` object that simply waits for an arbitrary amount of time and then either resolves or rejects the promise &ndash; and *this* is the crucial difference between the two approaches.
+
+If you wanted to make `proxyquire` behave as `Mocktail` does, then your `Flickr.js` file would need to `proxyquire` the `Request` object as well, which leads to polluting your code with test-specific code &ndash; with `Mocktail` the test-specific code is isolated to only the files you wish to mock and/or stub.
 
 ## Contribute
 
