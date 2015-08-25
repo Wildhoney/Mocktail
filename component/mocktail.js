@@ -35,6 +35,16 @@ class Mocktail {
     }
 
     /**
+     * @method resolve
+     * @param {Function} actualModule
+     * @param {String} nameRepresentation
+     * @return {*}
+     */
+    resolve(actualModule, nameRepresentation = '') {
+        return this.mock(actualModule, nameRepresentation);
+    }
+
+    /**
      * @method mock
      * @param {Function} actualModule
      * @param {String} [nameRepresentation='']
