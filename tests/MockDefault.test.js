@@ -1,7 +1,7 @@
-import {mock} from '../component/mocktail';
-import                './test-utils/Bootstrap';
-import                './test-utils/Mocks';
-import Request   from './test-utils/exports/Inject';
+import {mock} from  '../component/mocktail';
+import              './test-utils/Setup';
+import              './test-utils/Mocks';
+import Request from './test-utils/exports/Inject';
 
 describe('Mocktail: Dependency Injection', () => {
 

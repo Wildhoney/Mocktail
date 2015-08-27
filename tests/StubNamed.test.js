@@ -1,4 +1,4 @@
-import                       './test-utils/Bootstrap';
+import                       './test-utils/Setup';
 import {Authentication} from './test-utils/exports/Named';
 
 describe('Mocktail: Import Named', () => {

@@ -1,5 +1,5 @@
 import {stub, inject, reset, env, ENV} from '../component/mocktail';
-import                                      './test-utils/Bootstrap';
+import                                      './test-utils/Setup';
 import Authentication                  from './test-utils/modules/Authentication';
 import AuthenticationMock              from './test-utils/modules/AuthenticationMock';
 
