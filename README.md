@@ -20,7 +20,7 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 
 Mocktail encourages developers to stub at runtime &mdash; dependency injection &mdash; when writing their tests &ndash; for this `mocktail` provides the `mock` method.
 
-> :page_facing_up: Request.js
+> :dango: Request.js
 
 ```javascript
 import {mock} from 'mocktail';
@@ -32,7 +32,7 @@ export default mock(Request);
 
 By default the `mock` method in the case above will return the actual `Request` object when imported. However, when unit testing you'll define the environment as `ENV.TESTING` using the `env` method in your setup file. In the same file you can specify an alternative for the `Request` object by specifying its `RequestMock` instead:
 
-> :page_facing_up: Setup.js
+> :dango: Setup.js
 
 ```javascript
 import {env, ENV, inject} from 'mocktail';
@@ -45,7 +45,7 @@ inject('Request', RequestMock);
 
 Now whenever you import the `Request` module in your unit tests &mdash; assuming you import **after** you have imported your setup file &mdash; then the returned object will be `RequestMock` rather than `Request`.
 
-> :page_facing_up: Tests.js
+> :dango: Tests.js
 
 ```javascript
 import 'Setup';
@@ -56,7 +56,7 @@ import Request from 'Request';
 
 Seldom you may wish to stub in your module itself &ndash; in these cases pass it through `mocktail.stub` passing in both the actual object and its associated stub object:
 
-> :page_facing_up: Request.js
+> :dango: Request.js
 
 ```javascript
 import {stub} from 'mocktail';
@@ -69,7 +69,7 @@ export default stub(Request, RequestMock);
 
 With the `stub` method, the second argument is **always** the stubed object that will be returned when `environment` is defined as `true` using:
 
-> :page_facing_up: Setup.js
+> :dango: Setup.js
 
 ```javascript
 import {env, ENV} from 'mocktail';
@@ -84,7 +84,7 @@ With Mocktail it's important to note that the `import` syntax is **exactly** the
 
 Often you may want to export your modules without exporting as the `default` &ndash; in these instances you can use the `export as` syntax:
 
-> :page_facing_up: Request.js
+> :dango: Request.js
 
 ```javascript
 import {mock} from 'mocktail';
@@ -98,7 +98,7 @@ export {Module as Request};
 
 Then when you import the module elsewhere, you simply refer to the import as `Request`, which could either be the true `Request` object, or its stub &ndash; `RequestMock`:
 
-> :page_facing_up: Tests.js
+> :dango: Tests.js
 
 ```javascript
 import {Request} from './Request';
@@ -108,7 +108,7 @@ import {Request} from './Request';
 
 Setting up Mocktail is straightforward &ndash; with the easiest way being to have a setup file that is loaded before your unit tests are run.
 
-> :page_facing_up: Setup.js
+> :dango: Setup.js
 
 ```javascript
 import {env, ENV} from 'mocktail';
@@ -117,14 +117,14 @@ env(ENV.TESTING);
 
 You then need to ensure that your setup file is loaded prior to the loading of your components:
 
-> :page_facing_up: Tests.js
+> :dango: Tests.js
 
 ```javascript
 import './Setup';
 import Request from '../components/Request';
 
-describe('Request', () => :page_facing_up: {
-    it('Should provide RequestMock', () => :page_facing_up: {
+describe('Request', () => :dango: {
+    it('Should provide RequestMock', () => :dango: {
         expect(Request.name).toEqual('RequestMock');
     });
 });
@@ -140,13 +140,13 @@ You can take a look in the [`example` directory](https://github.com/Wildhoney/Mo
 
 Assume you have the following project:
 
-> :page_facing_up: Request.js
+> :dango: Request.js
 
 ```javascript
 export default class Request() {}
 ```
 
-> :page_facing_up: Flickr.js
+> :dango: Flickr.js
 
 ```javascript
 import Request from './Request';
