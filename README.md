@@ -16,6 +16,8 @@ Mock all of your ES6 module components with Mocktail using dependency injection.
 
 ## Getting Started
 
+> :ice_cream: Watch "Getting Started with Mocktail": https://vimeo.com/137495637
+
 Mocktail encourages developers to stub at runtime &mdash; dependency injection &mdash; when writing their tests &ndash; for this `mocktail` provides the `mock` method.
 
 > :page_facing_up: Request.js
