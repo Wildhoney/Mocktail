@@ -3,7 +3,7 @@ import              './test-utils/Setup';
 import              './test-utils/Mocks';
 import Request from './test-utils/exports/Inject';
 
-describe('Mocktail: Dependency Injection', () => {
+describe('Mocktail: Mock Default', () => {
 
     it('Should be able to inject a custom stub not used by the component;', () => {
         expect(Request.name).toEqual('RequestMock');
