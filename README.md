@@ -136,6 +136,8 @@ You can take a look in the [`example` directory](https://github.com/Wildhoney/Mo
 
 ## Comparing Proxyquire
 
+**See:** [https://github.com/Wildhoney/Mocktail/issues/2](https://github.com/Wildhoney/Mocktail/issues/2)
+
 [Proxyquire](https://github.com/thlorenz/proxyquire) is a useful tool in importing mocks for your tests &ndash; so much so that it may seem futile to use `Mocktail`. However, the advantages of `Mocktail` are apparent when you consider a project.
 
 Assume you have the following project:
