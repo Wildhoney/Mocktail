@@ -1,20 +1,20 @@
 (function main() {
 
-    var gulp   = require('gulp'),
-        karma  = require('gulp-karma'),
-        path   = require('path'),
-        yaml   = require('js-yaml'),
+    var path   = require('path'),
         fs     = require('fs'),
+        gulp   = require('gulp'),
+        karma  = require('gulp-karma'),
+        yaml   = require('js-yaml'),
         config = yaml.safeLoad(fs.readFileSync('./mocktail.yml', 'utf8'));
 
     gulp.task('karma', function() {
 
         return gulp.src([].concat(config.component, config.tests))
-            .pipe(karma({
-                configFile: 'karma.conf.js',
-                action: 'run'
-            }))
-            .on('error', function(err) { throw err; });
+                   .pipe(karma({
+                       configFile: 'karma.conf.js',
+                       action: 'run'
+                   }))
+                   .on('error', function(error) { throw error; });
 
     });
 
