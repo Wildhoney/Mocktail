@@ -23,6 +23,11 @@
   "bugs": {
     "url": "https://github.com/Wildhoney/Mocktail/issues"
   },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
   "homepage": "https://github.com/Wildhoney/Mocktail#readme",
   "devDependencies": {
     "babelify": "^6.1.3",
