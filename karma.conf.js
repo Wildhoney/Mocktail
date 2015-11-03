@@ -22,7 +22,7 @@ module.exports = function(config) {
         singleRun: false,
         browserify: {
             debug: true,
-            transform: [["babelify", { stage: 0 }]]
+            transform: [["babelify", {"stage": 0}]]
         }
 
     });
