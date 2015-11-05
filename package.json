@@ -2,7 +2,7 @@
   "name": "mocktail",
   "version": "0.3.5",
   "description": "Mock all of your ES6 module components with Mocktail using dependency injection.",
-  "main": "lib/mocktail.js",
+  "main": "component/mocktail.js",
   "scripts": {
     "build": "babel --presets=es2015 component -d lib",
     "test": "gulp test",
