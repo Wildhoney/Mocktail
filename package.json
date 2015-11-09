@@ -2,11 +2,11 @@
   "name": "mocktail",
   "version": "0.3.6",
   "description": "Mock all of your ES6 module components with Mocktail using dependency injection.",
-  "main": "component/mocktail.js",
+  "main": "dist/mocktail.js",
   "scripts": {
-    "build": "babel --presets=es2015 component -d lib",
+    "build": "babel --presets=es2015 component -d dist",
     "test": "gulp test",
-    "clean": "rimraf lib"
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
