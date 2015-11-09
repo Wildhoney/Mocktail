@@ -25,11 +25,6 @@
   "bugs": {
     "url": "https://github.com/Wildhoney/Mocktail/issues"
   },
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
-  },
   "homepage": "https://github.com/Wildhoney/Mocktail#readme",
   "devDependencies": {
     "babel": "^6.0.15",
